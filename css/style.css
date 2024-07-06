@@ -1,0 +1,283 @@
+/* .modal-dialog{
+    width: 500px;
+} */
+
+
+
+#modal-maghale{
+    margin-left: 15% !important;
+    margin-right: 15% !important;
+
+    max-width: 70% !important;
+}
+
+.tarikh {
+    margin-top: 10px;
+    margin-right: 15px;
+    font-size: small;
+    text-align: start !important;
+}
+
+.card-img-top {
+    /* ... ارتفاع عکس ها ...  */
+    height: 300px;
+}
+
+
+#section-asli {
+    /*  ...فاصله select از بالا ... */
+    padding-top: 15px !important;
+}
+
+
+.fade:not(.show) {
+    /* ... نمایش مودال مقاله ها ... */
+    opacity: 1;
+}
+
+
+.modal-footer{  /* ... close , like, delete واس مدال , دکمه ی ... */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#btnLike-delete{
+    display: flex;
+    align-items: center;
+}
+.delete{
+    margin-right: 10px;
+} 
+.like{
+    background: transparent !important;
+    font-size: 25px;
+    color: #42aa5c !important;
+}
+.like:hover{
+    color: rgb(46, 132, 66) !important;
+}
+
+
+.text1 { /*  ... نشان دادن 3 خط از متن ... */
+    height: 60px;
+    line-height: 20px;
+    overflow: hidden;
+    min-height: 60px;
+}
+
+#num {
+    /* ... برای اینپوت شماره لاگیم ... */
+    direction: rtl;
+}
+
+.btn {
+    /* background: linear-gradient(rgb(243, 68, 106),rgb(255, 100, 100)); */
+    background: linear-gradient(rgb(2, 192, 97), rgb(56, 246, 151));
+    color: #333;
+    border: none
+}
+
+#afzoodan-maghale {
+    cursor: pointer;
+    display: none;
+}
+
+/* ثبت نام و ورود ...ثبت نام و ورود و خروج ...ثبت نام و ورود */
+#khoroj {
+    cursor: pointer;
+    display: none;
+}
+
+#open1 {
+    cursor: pointer;
+    display: none;
+}
+
+#open {
+    cursor: pointer;
+}
+
+
+.form-box {
+    width: 380px;
+    height: 400px;
+    background: #fff;
+    position: relative;
+    margin: 5% auto;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.button-box {
+    width: 220px;
+    margin: 10px auto 30px auto;
+    border-radius: 30px;
+    box-shadow: 0 0 30px 10px rgba(255, 77, 77, .3);
+    position: relative;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+
+#btn {
+    background: linear-gradient(rgb(243, 68, 106), rgb(255, 100, 100));
+    width: 110px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+}
+
+.input-group {
+    width: 100%;
+    padding: 0 30px;
+    position: absolute;
+    transition: all .3s ease-in-out;
+
+}
+
+.input-field {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #bbb7b7;
+    border-radius: 30px !important;
+}
+
+.input-group input[type=submit] {
+    width: 100%;
+    border: none;
+    background: linear-gradient(rgb(243, 68, 106), rgb(255, 100, 100));
+    color: #333;
+    font-size: 18px;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 30px !important;
+}
+
+.input-group input[type=checkbox] {
+    margin: 20px 0;
+    margin-right: 10px !important;
+}
+
+.input-group label {
+    margin: 20px 0;
+    margin-right: 5px !important;
+    font-size: 13px;
+    color: rgb(75, 75, 75);
+}
+
+#close {
+    border: none;
+    background: transparent;
+    font-size: x-large;
+    color: #333;
+    margin-right: 10px;
+}
+
+#register {
+    right: 450px;
+}
+
+
+
+
+/*... مدال پروفایل ... مدال پروفایل ... */
+
+.modal-proph {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+
+}
+
+#userInfoForm {
+    width: 380px;
+    height: 400px;
+    background: #fff;
+    position: relative;
+    margin: 5% auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#userInfoForm label {
+    margin: 7px 0;
+    margin-right: 5px !important;
+    font-size: 13px;
+    color: rgb(75, 75, 75);
+}
+
+#userInfoForm input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #bbb7b7;
+    border-radius: 6px !important;
+}
+
+#userInfoForm button {
+    width: 100%;
+    border: none;
+    background: linear-gradient(rgb(2, 192, 97), rgb(56, 246, 151));
+    color: #333;
+    font-size: 18px;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 30px !important;
+}
+
+
+/* ... افزودن مقاله ... مدال افزودن مقاله ... افزودن مقاله ... */
+#formAzoodan {
+    width: 380px;
+    height: 510px;
+    position: relative;
+    margin: 5px auto;
+    /* padding: 10px; */
+}
+
+/* .modal-header{
+    justify-content: center !important;
+} */
+#formAzoodan label {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 13px;
+    color: rgb(59, 58, 58);
+}
+
+#formAzoodan input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #bbb7b7;
+    border-radius: 6px;
+}
+
+#formAzoodan button {
+    width: 100%;
+    border: none;
+    background: linear-gradient(rgb(2, 192, 97), rgb(56, 246, 151));
+    color: #025e19;
+    font-size: 18px;
+    padding: 5px;
+    margin: 15px 0;
+    border-radius: 30px;
+}

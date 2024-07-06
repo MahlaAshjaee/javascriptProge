@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-white">
+      <div class="container">
+        <a class="navbar-brand  py-3" href="#">Tat Family</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex px-5" role="search">
+            <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
+          </form>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id="open" class="nav-link active" aria-current="page" data-bs-toggle="modal"
+                data-bs-target="#loginModal">ثبت نام / ورود</a>
+              <a id="open1" class="nav-link active" aria-current="page" data-bs-toggle="modal"
+                data-bs-target="#profile-modal">پروفایل</a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="afzoodan-maghale" aria-current="page" data-bs-toggle="modal" data-bs-target="#afzoodan-magha" href="#">افزودن مقاله</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " id="khoroj" aria-disabled="true">خروج</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="section-asli" class="bg-light text-center">
+    <div class="container">
+
+      <select class="form-select" aria-label="Default select example" id="selectElement" onchange="tazetarinha()">
+        <option selected value="0" onclick="tazetarinha()">نمایش ترتیب مقاله ها</option>
+        <option value="1" onclick="tazetarinha()">تازه ترین ها</option>
+        <option value="2" onclick="tazetarinha()">علاقه مندی ها</option>
+        <option value="3" onclick="tazetarinha()">قدیمی ترین ها</option>
+      </select>
+
+      <div class="main row align-items-center justify-content-between" id="myList">
+      </div>
+
+    </div>
+    <p id="searchResults"></p>
+    
+    <footer class="mt-4">
+      <p>صفحه‌بندی</p>
+      <nav aria-label="صفحه‌بندی">
+        <ul class="pagination justify-content-center" id="pagination"></ul>
+      </nav>
+      <!-- <div class="container text-center"></div> -->
+    </footer>
+
+
+    </div>
+  </section>
+
+
+
+  <!-- ورود / ثبت نام -->
+  <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="button-box">
+            <div id="btn"></div>
+            <button class="toggle-btn" onclick="login()">ورود</button>
+            <button class="toggle-btn" onclick="register()">ثبت نام</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-box">
+            <!-- <div class="close">
+                    <a id="close" href="#"><i class="fas fa-times "></i></a>
+                  </div> -->
+            <form id="login" class="input-group">
+              <input type="number" id="num" class="input-field" required pattern="[0-9]{11}" placeholder="شماره مبایل">
+              <input type="password" id="pass" class="input-field" required placeholder="پسورد شما">
+              <input type="checkbox" id="checkbox">
+              <label for="checkbox">فراموشم نکن</label>
+              <input type="submit" id="but-prof" value="ورود">
+            </form>
+            <form id="register" class="input-group">
+              <input type="text" id="num1" class="input-field" required placeholder="نام کاربری یا ایمیل">
+              <input type="password" id="pass1" class="input-field" required placeholder="پسورد ">
+              <input type="password" id="pass11" class="input-field" required placeholder="تکرار پسورد">
+              <input type="submit" id="but-sabt" value="ثبت نام">
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="profile-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">پروفایل</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="userInfoForm">
+            <label for="userNumber">شماره کاربر:</label>
+            <input type="text" id="userNumber" name="userNumber" required>
+
+            <label for="fullName">نام و نام خانوادگی:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="birthDate">تاریخ تولد:</label>
+            <input type="text" id="birthDate" name="birthDate" required>
+
+            <label for="nationalCode">کد ملی:</label>
+            <input type="text" id="nationalCode" name="nationalCode" required>
+
+            <button type="submit">تایید</button>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- مدال افزودن مقاله -->
+  <div class="modal fade" id="afzoodan-magha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">افزودن مقاله</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formAzoodan">
+
+            <label for="photo">آپلود عکس:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+            
+            <label for="onvan">عنوان مقاله:</label>
+            <input type="text" id="onvan" name="onvan" required>
+
+            <label for="matnKootah">متن کوتاه مقاله:</label>
+            <input type="text" id="matnKootah" name="matnKootah" required>
+
+
+            <label for="matnKamel">متن کامل مقاله:</label>
+            <input type="text" id="matnKamel" name="matnKamel" required>
+
+    
+            <label for="date">تاریخ انتشار:</label>
+            <input type="date" id="date" name="date" required>
+            <!-- <button id="subBtn">ok</button> -->
+
+            <label for="namNevisande">نام نویسنده:</label>
+            <input type="text" id="namNevisande" name="namNevisande" required>
+    
+          
+            <button type="submit">ذخیره</button>
+        </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal modal-lg fade" id="modal-maghale" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="js/all.min.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pagiAfzoo.js"></script>
+  <!-- <script src="js/pagination.js"></script> -->
+  <!-- <script src="js/afzoodan.js"></script> -->
+</body>
+
+</html>
