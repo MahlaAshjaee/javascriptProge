@@ -1,44 +1,41 @@
+document
+  .getElementById("afzoodan-magha")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    var photo = document.getElementById("photo").value;
+    var onvan = document.getElementById("onvan").value;
+    var matnKootah = document.getElementById("matnKootah").value;
+    var matnKamel = document.getElementById("matnKamel").value;
+    var date = document.getElementById("date").value;
+    var namNevisande = document.getElementById("namNevisande").value;
 
-document.getElementById('afzoodan-magha').addEventListener('submit', function(e){
-e.preventDefault();
-var photo = document.getElementById('photo').value;
-var onvan = document.getElementById('onvan').value;
-var matnKootah = document.getElementById('matnKootah').value;
-var matnKamel = document.getElementById('matnKamel').value;
-var date = document.getElementById('date').value;
-var namNevisande = document.getElementById('namNevisande').value;
+    var myArray = localStorage.getItem("myArray");
+    if (myArray) {
+      myArray = JSON.parse(myArray);
+    } else {
+      myArray = [];
+    }
 
+    const article = {
+      img: photo,
+      title: onvan,
+      text: matnKootah,
+      text1: matnKamel,
+      date: date,
+      writer1: namNevisande,
+    };
 
-var myArray = localStorage.getItem('myArray');
-if (myArray){
-    myArray = JSON.parse(myArray);
-} else {
-    myArray = [];
-}
+    myArray.push(article);
+    localStorage.setItem("myArray", JSON.stringify(myArray));
 
-const article = {
-    img:photo,
-    title:onvan,
-    text:matnKootah,
-    text1:matnKamel,
-    date:date,
-    writer1:namNevisande
-};
+    var myArrayString = JSON.stringify(myArray);
+    localStorage.setItem("myArray", myArrayString);
 
-myArray.push(article);
-localStorage.setItem('myArray',JSON.stringify(myArray));
+    var storedArrayString = localStorage.getItem("myArray");
+    var storedArray = JSON.parse(storedArrayString);
 
-
-var myArrayString = JSON.stringify(myArray);
-localStorage.setItem('myArray' , myArrayString);
-
-
-var storedArrayString = localStorage.getItem('myArray');
-var storedArray = JSON.parse(storedArrayString);
-
-
-let x = storedArray.map((value, index) => {
-    return `<div class="col mt-4  list-group-item">
+    let x = storedArray.map((value, index) => {
+      return `<div class="col mt-4  list-group-item">
     <div class="card" style="width:410px">
     <img class="card-img-top" src=${value.img} alt="Card image">
     <div class="card-body">
@@ -48,10 +45,9 @@ let x = storedArray.map((value, index) => {
     <p class="tarikh">${value.date}</p>
     </div>
     </div>
-    </div>`
-})
+    </div>`;
+    });
 
-document.querySelector('.main').innerHTML = x;
-alert('مقاله با موفقیت ذخیره شد');
-
-});
+    document.querySelector(".main").innerHTML = x;
+    alert("مقاله با موفقیت ذخیره شد");
+  });

@@ -1,84 +1,77 @@
-
-
 function preparePagination(showLatest = false) {
-    // کد مربوط به صفحه‌بندی و نمایش مقالات
-    const list = document.getElementById("myList");
-    const items = Array.from(list.getElementsByClassName("list-group-item"));
-    console.log("list: ",items);
+  const list = document.getElementById("myList");
+  const items = Array.from(list.getElementsByClassName("list-group-item"));
+  console.log("list: ", items);
 
-    const perPage = 6; // تعداد آیتم‌ها در هر صفحه
-    const totalPages = Math.ceil(items.length / perPage); // تعداد کل صفحات
+  const perPage = 6;
+  const totalPages = Math.ceil(items.length / perPage);
 
-    const showPage = (pageNumber) => {
-        const start = (pageNumber - 1) * perPage;
-        const end = start + perPage;
-        items.forEach((item, index) => {
-            item.style.display = (index >= start && index < end) ? "block" : "none";
-        });
-    };
+  const showPage = (pageNumber) => {
+    const start = (pageNumber - 1) * perPage;
+    const end = start + perPage;
+    items.forEach((item, index) => {
+      item.style.display = index >= start && index < end ? "block" : "none";
+    });
+  };
 
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  const createPaginationButtons = () => {
     const pagination = document.getElementById("pagination");
-    pagination.innerHTML = ""; // پاک کردن دکمه‌های pagination قبلی
+    for (let i = 1; i <= totalPages; i++) {
+      const li = document.createElement("li");
+      li.classList.add("page-item");
+      const link = document.createElement("a");
+      link.classList.add("page-link");
+      link.href = "#";
+      link.textContent = i;
+      li.appendChild(link);
+      pagination.appendChild(li);
 
-    const createPaginationButtons = () => {
-        const pagination = document.getElementById("pagination");
-        for (let i = 1; i <= totalPages; i++) {
-            const li = document.createElement("li");
-            li.classList.add("page-item");
-            const link = document.createElement("a");
-            link.classList.add("page-link");
-            link.href = "#";
-            link.textContent = i;
-            li.appendChild(link);
-            pagination.appendChild(li);
-
-            link.addEventListener("click", () => showPage(i));
-        }
-    };
-    showPage(showLatest ? totalPages : 1);
-    createPaginationButtons();
+      link.addEventListener("click", () => showPage(i));
+    }
+  };
+  showPage(showLatest ? totalPages : 1);
+  createPaginationButtons();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    preparePagination()
+  preparePagination();
 });
 
+document.getElementById("formAzoodan").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var photo = document.getElementById("photo").files[0];
+  var onvan = document.getElementById("onvan").value;
+  var matnKootah = document.getElementById("matnKootah").value;
+  var matnKamel = document.getElementById("matnKamel").value;
+  var date = document.getElementById("date").value;
+  var namNevisande = document.getElementById("namNevisande").value;
 
-document.getElementById('formAzoodan').addEventListener('submit', function (e) {
-    // کد افزودن مقاله
-    e.preventDefault();
-    var photo = document.getElementById('photo').files[0];
-    var onvan = document.getElementById('onvan').value;
-    var matnKootah = document.getElementById('matnKootah').value;
-    var matnKamel = document.getElementById('matnKamel').value;
-    var date = document.getElementById('date').value;
-    var namNevisande = document.getElementById('namNevisande').value;
+  photo = URL.createObjectURL(photo);
 
-    photo = URL.createObjectURL(photo);
+  var myArray = localStorage.getItem("myArray");
+  if (myArray) {
+    myArray = JSON.parse(myArray);
+  } else {
+    myArray = [];
+  }
 
-    var myArray = localStorage.getItem('myArray');
-    if (myArray) {
-        myArray = JSON.parse(myArray);
-    } else {
-        myArray = [];
-    }
+  const article = {
+    img: photo,
+    title: onvan,
+    text: matnKootah,
+    text1: matnKamel,
+    date: date,
+    writer1: namNevisande,
+  };
 
-    const article = {
-        img: photo,
-        title: onvan,
-        text: matnKootah,
-        text1: matnKamel,
-        date: date,
-        writer1: namNevisande
-    };
+  myArray.push(article);
+  localStorage.setItem("myArray", JSON.stringify(myArray));
 
-    myArray.push(article);
-    localStorage.setItem('myArray', JSON.stringify(myArray));
-
-
-
-    let x = myArray.map((value, index) => {
-        return `<div class="col mt-4  list-group-item">
+  let x = myArray.map((value, index) => {
+    return `<div class="col mt-4  list-group-item">
         <div class="card" style="width:410px">
         <img class="card-img-top" src=${value.img} alt="Card image">
         <div class="card-body">
@@ -88,14 +81,13 @@ document.getElementById('formAzoodan').addEventListener('submit', function (e) {
         <p class="tarikh">${value.date}</p>
         </div>
         </div>
-        </div>`
-    })
+        </div>`;
+  });
 
-    document.querySelector('.main').innerHTML = x.join("");
+  document.querySelector(".main").innerHTML = x.join("");
 
-    document.querySelector("#afzoodan-magha").querySelector(".btn-close").click() // ... بستن مدال مقاله ...
+  document.querySelector("#afzoodan-magha").querySelector(".btn-close").click();
 
-    preparePagination(true);
-    alert('مقاله با موفقیت ذخیره شد');
-
+  preparePagination(true);
+  alert("مقاله با موفقیت ذخیره شد");
 });

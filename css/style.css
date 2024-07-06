@@ -1,9 +1,3 @@
-/* .modal-dialog{
-    width: 500px;
-} */
-
-
-
 #modal-maghale{
     margin-left: 15% !important;
     margin-right: 15% !important;
@@ -23,38 +17,38 @@
     height: 300px;
 }
 
-
 #section-asli {
     padding-top: 15px !important;
 }
 
-
 .fade:not(.show) {
     opacity: 1;
 }
-
 
 .modal-footer{ 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 #btnLike-delete{
     display: flex;
     align-items: center;
 }
+
 .delete{
     margin-right: 10px;
 } 
+
 .like{
     background: transparent !important;
     font-size: 25px;
     color: #42aa5c !important;
 }
+
 .like:hover{
     color: rgb(46, 132, 66) !important;
 }
-
 
 .text1 {
     height: 60px;
@@ -68,7 +62,6 @@
 }
 
 .btn {
-    /* background: linear-gradient(rgb(243, 68, 106),rgb(255, 100, 100)); */
     background: linear-gradient(rgb(2, 192, 97), rgb(56, 246, 151));
     color: #333;
     border: none
@@ -79,7 +72,6 @@
     display: none;
 }
 
-/* ثبت نام و ورود ...ثبت نام و ورود و خروج ...ثبت نام و ورود */
 #khoroj {
     cursor: pointer;
     display: none;
@@ -93,7 +85,6 @@
 #open {
     cursor: pointer;
 }
-
 
 .form-box {
     width: 380px;
@@ -185,11 +176,6 @@
     right: 450px;
 }
 
-
-
-
-/*... مدال پروفایل ... مدال پروفایل ... */
-
 .modal-proph {
     position: absolute;
     top: 0;
@@ -241,18 +227,13 @@
 }
 
 
-/* ... افزودن مقاله ... مدال افزودن مقاله ... افزودن مقاله ... */
 #formAzoodan {
     width: 380px;
     height: 510px;
     position: relative;
     margin: 5px auto;
-    /* padding: 10px; */
 }
 
-/* .modal-header{
-    justify-content: center !important;
-} */
 #formAzoodan label {
     width: 100%;
     margin: 5px 0;
